@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   title: "GPT_Prompts",
   description: "专为工作提效打造的 AI 提示词分享平台",
   icons: {
-    icon: "/note.svg",
-    shortcut: "/note.svg",
-    apple: "/note.svg",
+    icon: "/globe.svg",
+    shortcut: "/globe.svg",
+    apple: "/globe.svg",
   },
 };
 
