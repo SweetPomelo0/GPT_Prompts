@@ -19,11 +19,21 @@
   }
 }
 
+/* 暗黑模式样式 */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 body {
   background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background: linear-gradient(to bottom, #121212, #1e1e1e);
 }
 
 @keyframes fade-in-scale {

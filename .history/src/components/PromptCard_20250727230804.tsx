@@ -32,14 +32,14 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
 
   return (
     <div 
-      className="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-3 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 p-3 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
       onClick={handleCardClick}
       style={{ minHeight: '320px', display: 'flex', flexDirection: 'column' }} // 设置最小高度以确保卡片高度基本一致，并强制使用flex布局
     >
       {/* 标题和复制按钮 */}
       <div className="flex justify-between items-start mb-2">
         <div className="flex-1 mr-2">
-          <h3 className="text-base font-semibold text-slate-900 mb-1">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
             {prompt.title}
           </h3>
         </div>
@@ -60,17 +60,17 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
       </div>
 
       {/* 描述 - 固定两行高度 */}
-      <p className="text-sm text-gray-700 leading-relaxed mb-3 line-clamp-2 overflow-hidden text-ellipsis">
+      <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3 line-clamp-2 overflow-hidden text-ellipsis">
         {prompt.description}
       </p>
 
       {/* 内容显示区域 */}
       <div className="mb-2 flex-grow relative">
         {/* 背景层 */}
-        <div className="bg-gray-50 rounded-lg absolute inset-0"></div>
+        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg absolute inset-0"></div>
         {/* 内容层 - 位于背景层之上 */}
         <div className="p-3 h-full relative z-10">
-          <div className="text-xs text-gray-700 leading-relaxed max-h-48 overflow-y-auto custom-scrollbar prose prose-xs max-w-none">
+          <div className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed max-h-48 overflow-y-auto custom-scrollbar prose prose-xs dark:prose-invert max-w-none">
             <ReactMarkdown 
               remarkPlugins={[remarkGfm]}
               components={{

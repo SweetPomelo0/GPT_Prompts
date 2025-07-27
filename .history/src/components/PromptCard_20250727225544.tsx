@@ -39,7 +39,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
       {/* 标题和复制按钮 */}
       <div className="flex justify-between items-start mb-2">
         <div className="flex-1 mr-2">
-          <h3 className="text-base font-semibold text-slate-900 mb-1">
+          <h3 className="text-lg font-bold text-slate-900 mb-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-sm border-b-2 border-blue-200 pb-1 rounded-t">
             {prompt.title}
           </h3>
         </div>
@@ -60,7 +60,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
       </div>
 
       {/* 描述 - 固定两行高度 */}
-      <p className="text-sm text-gray-700 leading-relaxed mb-3 line-clamp-2 overflow-hidden text-ellipsis">
+      <p className="text-xs text-gray-600 leading-relaxed mb-2 line-clamp-2 h-[2.5rem] overflow-hidden">
         {prompt.description}
       </p>
 
@@ -98,7 +98,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
           {prompt.categories.slice(0, 3).map((category, index) => (
             <span
               key={index}
-              className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100/80 text-blue-700 text-xs rounded-full shadow-sm"
+              className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs rounded-full"
             >
               <Tag className="w-2.5 h-2.5" />
               {category}

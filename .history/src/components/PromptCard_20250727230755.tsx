@@ -32,7 +32,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
 
   return (
     <div 
-      className="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-3 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 p-3 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
       onClick={handleCardClick}
       style={{ minHeight: '320px', display: 'flex', flexDirection: 'column' }} // 设置最小高度以确保卡片高度基本一致，并强制使用flex布局
     >

@@ -32,10 +32,26 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
 
   return (
     <div 
-      className="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-3 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
+      className="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-4 transition-shadow duration-200 cursor-pointer flex flex-col h-full"
       onClick={handleCardClick}
       style={{ minHeight: '320px', display: 'flex', flexDirection: 'column' }} // 设置最小高度以确保卡片高度基本一致，并强制使用flex布局
     >
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      `}</style>
       {/* 标题和复制按钮 */}
       <div className="flex justify-between items-start mb-2">
         <div className="flex-1 mr-2">
@@ -60,17 +76,17 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
       </div>
 
       {/* 描述 - 固定两行高度 */}
-      <p className="text-sm text-gray-700 leading-relaxed mb-3 line-clamp-2 overflow-hidden text-ellipsis">
+      <p className="text-xs text-gray-600 leading-relaxed mb-2 line-clamp-2 h-[2.5rem] overflow-hidden">
         {prompt.description}
       </p>
 
       {/* 内容显示区域 */}
-      <div className="mb-2 flex-grow relative">
+      <div className="mb-3 flex-grow relative">
         {/* 背景层 */}
         <div className="bg-gray-50 rounded-lg absolute inset-0"></div>
         {/* 内容层 - 位于背景层之上 */}
         <div className="p-3 h-full relative z-10">
-          <div className="text-xs text-gray-700 leading-relaxed max-h-48 overflow-y-auto custom-scrollbar prose prose-xs max-w-none">
+          <div className="text-sm text-gray-700 leading-relaxed max-h-48 overflow-y-auto custom-scrollbar prose prose-sm max-w-none">
             <ReactMarkdown 
               remarkPlugins={[remarkGfm]}
               components={{
@@ -98,7 +114,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
           {prompt.categories.slice(0, 3).map((category, index) => (
             <span
               key={index}
-              className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100/80 text-blue-700 text-xs rounded-full shadow-sm"
+              className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs rounded-full"
             >
               <Tag className="w-2.5 h-2.5" />
               {category}

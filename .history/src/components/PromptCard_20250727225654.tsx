@@ -60,7 +60,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
       </div>
 
       {/* 描述 - 固定两行高度 */}
-      <p className="text-sm text-gray-700 leading-relaxed mb-3 line-clamp-2 overflow-hidden text-ellipsis">
+      <p className="text-xs text-gray-600 leading-relaxed mb-2 line-clamp-2 h-[2.5rem] overflow-hidden">
         {prompt.description}
       </p>
 
@@ -98,7 +98,7 @@ export default function PromptCard({ prompt, onCardClick }: PromptCardProps) {
           {prompt.categories.slice(0, 3).map((category, index) => (
             <span
               key={index}
-              className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100/80 text-blue-700 text-xs rounded-full shadow-sm"
+              className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs rounded-full"
             >
               <Tag className="w-2.5 h-2.5" />
               {category}

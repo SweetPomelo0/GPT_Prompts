@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Search } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   onSearch: (query: string) => void;
@@ -23,21 +24,21 @@ export default function Header({ onSearch }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50">
+    <header className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:border-gray-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4 gap-4">
         {/* 网站标题 */}
         <div className="flex-1 min-w-0">
-          <h1 className="text-2xl font-bold text-slate-900 truncate">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white truncate">
             GPT Prompts
           </h1>
-          <p className="text-sm text-gray-600 leading-tight truncate mt-1">
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-tight truncate mt-1">
             专为工作提效打造的 AI 提示词分享平台
           </p>
         </div>
 
         {/* 搜索框 */}
-        <div className="flex-1 max-w-xl">
+        <div className="flex-1 max-w-xl flex items-center gap-4">
           <form onSubmit={handleSubmit} className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
@@ -45,9 +46,12 @@ export default function Header({ onSearch }: HeaderProps) {
               placeholder="搜索提示词模板..."
               value={searchQuery}
               onChange={handleInputChange}
-              className="w-full bg-gray-100/50 border-0 rounded-full pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:bg-white shadow-inner transition-all duration-300 placeholder-gray-400 hover:bg-gray-50"
+              className="w-full bg-gray-100/50 dark:bg-gray-800/50 border-0 rounded-full pl-9 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-700 shadow-inner transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-200"
             />
           </form>
+          
+          {/* 主题切换按钮 */}
+          <ThemeToggle />
         </div>
       </div>
       </div>
