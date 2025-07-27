@@ -27,27 +27,15 @@ export default function PromptList({ prompts, searchQuery }: PromptListProps) {
 
   // 拼音搜索辅助函数
   const matchesPinyin = (text: string, query: string): boolean => {
-    if (!pinyin.isSupported()) {
-      return false;
-    }
+    // 转换为拼音（不带音调）
+    const pinyinText = pinyin(text, { style: pinyin.STYLE_NORMAL }).join('');
+    // 转换为拼音首字母
+    const pinyinInitials = pinyin(text, { style: pinyin.STYLE_FIRST_LETTER }).join('');
     
-    try {
-      // 转换为拼音（不带音调）
-      const pinyinText = pinyin.convertToPinyin(text, '', true); // 小写，无分隔符
-      // 转换为拼音首字母
-      const pinyinInitials = pinyin.parse(text)
-        .filter(token => token.type === 2) // 只取中文字符
-        .map(token => token.target.charAt(0).toLowerCase())
-        .join('');
-      
-      return (
-        pinyinText.includes(query) ||
-        pinyinInitials.includes(query)
-      );
-    } catch (error) {
-      console.warn('拼音转换失败:', error);
-      return false;
-    }
+    return (
+      pinyinText.toLowerCase().includes(query) ||
+      pinyinInitials.toLowerCase().includes(query)
+    );
   };
 
   // 过滤提示词

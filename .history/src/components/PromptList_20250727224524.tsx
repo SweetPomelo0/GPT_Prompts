@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import pinyin from 'tiny-pinyin';
 import { Prompt } from '@/types/prompt';
 import PromptCard from './PromptCard';
 import PromptModal from './PromptModal';
@@ -25,53 +24,17 @@ export default function PromptList({ prompts, searchQuery }: PromptListProps) {
     setSelectedPrompt(null);
   };
 
-  // 拼音搜索辅助函数
-  const matchesPinyin = (text: string, query: string): boolean => {
-    if (!pinyin.isSupported()) {
-      return false;
-    }
-    
-    try {
-      // 转换为拼音（不带音调）
-      const pinyinText = pinyin.convertToPinyin(text, '', true); // 小写，无分隔符
-      // 转换为拼音首字母
-      const pinyinInitials = pinyin.parse(text)
-        .filter(token => token.type === 2) // 只取中文字符
-        .map(token => token.target.charAt(0).toLowerCase())
-        .join('');
-      
-      return (
-        pinyinText.includes(query) ||
-        pinyinInitials.includes(query)
-      );
-    } catch (error) {
-      console.warn('拼音转换失败:', error);
-      return false;
-    }
-  };
-
   // 过滤提示词
   const filteredPrompts = prompts.filter(prompt => {
     if (!searchQuery) return true;
     
     const query = searchQuery.toLowerCase();
-    
-    // 基本字符串匹配
-    const basicMatch = (
+    return (
       prompt.title.toLowerCase().includes(query) ||
       prompt.description.toLowerCase().includes(query) ||
       prompt.categories.some(category => category.toLowerCase().includes(query)) ||
       (prompt.content && prompt.content.toLowerCase().includes(query))
     );
-    
-    // 拼音匹配
-    const pinyinMatch = (
-      matchesPinyin(prompt.title, query) ||
-      matchesPinyin(prompt.description, query) ||
-      prompt.categories.some(category => matchesPinyin(category, query))
-    );
-    
-    return basicMatch || pinyinMatch;
   });
 
   if (filteredPrompts.length === 0) {

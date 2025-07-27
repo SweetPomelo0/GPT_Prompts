@@ -6,6 +6,7 @@ import CategoryNav from '@/components/CategoryNav';
 import PromptList from '@/components/PromptList';
 import { categories } from '@/data/prompts';
 import { Prompt } from '@/types/prompt';
+import pinyin from 'tiny-pinyin';
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('all');

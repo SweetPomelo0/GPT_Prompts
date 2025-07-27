@@ -38,13 +38,13 @@ export default function Header({ onSearch }: HeaderProps) {
 
         {/* 搜索框 */}
         <div className="flex-1 max-w-xl">
-          <form onSubmit={handleSubmit} className="relative">
+          <form onSubmit={handleSearch} className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
               type="text"
               placeholder="搜索提示词模板..."
               value={searchQuery}
-              onChange={handleInputChange}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-gray-50 border-0 rounded-full pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-200 placeholder-gray-500"
             />
           </form>
